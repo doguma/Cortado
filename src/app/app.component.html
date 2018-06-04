@@ -1,0 +1,36 @@
+
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+<div id="wrapper">
+  <main-nav></main-nav>
+
+  <div class="content columns">
+    <aside class="column is-2 is-offset-1">
+      <user-profile></user-profile>
+    </aside>
+
+    <main class="column is-8">
+      <notification-message></notification-message>
+
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+
+  <footer class="footer">
+    Angular v6.x + Firebase PWA Starter App <br>
+    Build me from scratch at <a href="https://angularfirebase.com">AngularFirebase.com</a><br>
+    <br>Open Source | MIT License | Created by <a href="https://jeffdelaney.me">Jeff Delaney</a>
+  </footer>
+
+
+</div>
