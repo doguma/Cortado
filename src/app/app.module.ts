@@ -21,7 +21,7 @@ import { AngularFireFunctionsModule } from 'angularfire2/functions';
 
 import { MaterialModule } from './material.module';
 import { ScheduleComponent } from './schedule/schedule.component'
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -42,6 +42,7 @@ import { ScheduleComponent } from './schedule/schedule.component'
     AngularFireStorageModule,
     AngularFireFunctionsModule,
     MaterialModule,
+    BrowserAnimationsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
   ],
   bootstrap: [AppComponent]

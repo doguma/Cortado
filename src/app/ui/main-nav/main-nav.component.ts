@@ -12,6 +12,8 @@ export class MainNavComponent {
 
 
   constructor(private auth: AuthService) { }
-
+    logout() {
+      this.auth.signOut();
+    }
 
 }

@@ -7,29 +7,29 @@
 <!-- *ngIf="auth.checkStatus()" -->
 <div *ngIf="(auth.user | async)">
       <a  class="no_text_decoration2" routerLink="/user-profile" routerLinkActive="active">
-        <mat-icon>
+        <mat-icon matTooltip="profile">
           accessibility
         </mat-icon>
       </a>
 
       <a class="no_text_decoration2" routerLink="/home-worker" routerLinkActive="active">    
-        <mat-icon>announcement</mat-icon>
+        <mat-icon matTooltip="announcement">announcement</mat-icon>
       </a>
 
       <a class="no_text_decoration2" routerLink="/schedule" routerLinkActive="active">  
-        <mat-icon>update</mat-icon>
+        <mat-icon matTooltip="schedule">update</mat-icon>
       </a>
 
       <a class="no_text_decoration2" routerLink="/notes" routerLinkActive="active">   
-        <mat-icon>equalizer</mat-icon>
+        <mat-icon matTooltip="inventory">equalizer</mat-icon>
       </a>
 
       <a class="no_text_decoration2" routerLink="/message-worker" routerLinkActive="active">     
-        <mat-icon>message</mat-icon>
+        <mat-icon matTooltip="messages">message</mat-icon>
       </a>
         
       <a class="no_text_decoration2" routerLink="/message-worker" routerLinkActive="active">     
-        <mat-icon>weekend</mat-icon>
+        <mat-icon matTooltip="logout" (click)="logout()">weekend</mat-icon>
       </a>
     </div>
     </mat-toolbar-row>
