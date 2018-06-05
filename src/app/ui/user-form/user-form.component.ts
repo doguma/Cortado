@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 import { AuthService } from '../../core/auth.service';
 
@@ -33,7 +35,7 @@ export class UserFormComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder, private auth: AuthService) { }
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.buildForm();
@@ -49,6 +51,7 @@ export class UserFormComponent implements OnInit {
 
   login() {
     this.auth.emailLogin(this.userForm.value['email'], this.userForm.value['password']);
+
   }
 
   resetPassword() {

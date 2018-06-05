@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from '../../core/auth.service';
+
+
 @Component({
   selector: 'main-nav',
   templateUrl: './main-nav.component.html',
@@ -8,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class MainNavComponent {
 
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
 
 }

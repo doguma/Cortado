@@ -1,0 +1,22 @@
+<div class="jumbotron">
+    <div class="container">
+    <h2 class="display-3">This week's Schedule (4/30~5/6)</h2>
+    <p class="lead">
+        message me only if emergency </p>
+    <hr class="my-4">
+  
+      
+
+  </div>
+  </div>
+
+
+  <mat-grid-list cols="8" rowHeight="70px">
+      <mat-grid-tile
+          *ngFor="let tile of tiles"
+          [colspan]="tile.cols"
+          [rowspan]="tile.rows"
+          [style.background]="tile.color">
+        {{tile.text}}
+      </mat-grid-tile>
+    </mat-grid-list>

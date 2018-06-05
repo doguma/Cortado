@@ -2,42 +2,35 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
         
-        <span class="fontPacifico"><a class="no_text_decoration" href="#">cortado</a></span>
-        <span class="example-spacer"></span>
+      <span class="fontPacifico"><a class="no_text_decoration" routerLink="/">cortado</a></span>
+      <span class="example-spacer"></span>
+<!-- *ngIf="auth.checkStatus()" -->
+<div *ngIf="(auth.user | async)">
+      <a  class="no_text_decoration2" routerLink="/user-profile" routerLinkActive="active">
+        <mat-icon>
+          accessibility
+        </mat-icon>
+      </a>
 
+      <a class="no_text_decoration2" routerLink="/home-worker" routerLinkActive="active">    
+        <mat-icon>announcement</mat-icon>
+      </a>
 
+      <a class="no_text_decoration2" routerLink="/schedule" routerLinkActive="active">  
+        <mat-icon>update</mat-icon>
+      </a>
 
-                <a class="no_text_decoration2" routerLink="/profile" routerLinkActive="active">
-                <mat-icon>
-                  accessibility
-                </mat-icon>
-              </a>
+      <a class="no_text_decoration2" routerLink="/notes" routerLinkActive="active">   
+        <mat-icon>equalizer</mat-icon>
+      </a>
 
-
-                  <a class="no_text_decoration2" routerLink="/home-worker" routerLinkActive="active">
-                    
-                <mat-icon>announcement</mat-icon>
-                </a>
-  
-
-                  <a class="no_text_decoration2" routerLink="/schedule" routerLinkActive="active">
-                    
-                <mat-icon>update</mat-icon>
-                </a>
-
-                  <a class="no_text_decoration2" routerLink="/notes" routerLinkActive="active">
-                    
-                <mat-icon>equalizer</mat-icon>
-
-                </a>
-
-                  <a class="no_text_decoration2" routerLink="/message-worker" routerLinkActive="active">
-                    
-                <mat-icon>message</mat-icon>
-
-                </a>
-                
-                <mat-icon>weekend</mat-icon>
-
-      </mat-toolbar-row>
+      <a class="no_text_decoration2" routerLink="/message-worker" routerLinkActive="active">     
+        <mat-icon>message</mat-icon>
+      </a>
+        
+      <a class="no_text_decoration2" routerLink="/message-worker" routerLinkActive="active">     
+        <mat-icon>weekend</mat-icon>
+      </a>
+    </div>
+    </mat-toolbar-row>
   </mat-toolbar>

@@ -19,11 +19,14 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireFunctionsModule } from 'angularfire2/functions';
 
-import { MaterialModule } from './material.module'
+import { MaterialModule } from './material.module';
+import { ScheduleComponent } from './schedule/schedule.component'
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

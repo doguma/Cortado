@@ -66,7 +66,6 @@ export class AuthService {
     return this.afAuth.auth
       .signInWithPopup(provider)
       .then(credential => {
-        this.notify.update('Welcome to Firestarter!!!', 'success');
         return this.updateUserData(credential.user);
       })
       .catch(error => this.handleError(error));
@@ -78,7 +77,6 @@ export class AuthService {
     return this.afAuth.auth
       .signInAnonymously()
       .then(credential => {
-        this.notify.update('Welcome to Firestarter!!!', 'success');
         return this.updateUserData(credential.user); // if using firestore
       })
       .catch(error => {
@@ -92,8 +90,9 @@ export class AuthService {
     return this.afAuth.auth
       .createUserWithEmailAndPassword(email, password)
       .then(credential => {
-        this.notify.update('Welcome to Firestarter!!!', 'success');
+        this.router.navigate(['/']);        
         return this.updateUserData(credential.user); // if using firestore
+        
       })
       .catch(error => this.handleError(error));
   }
@@ -103,6 +102,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then(credential => {
         this.notify.update('Welcome to Firestarter!!!', 'success');
+        this.router.navigate(['/']);
         return this.updateUserData(credential.user);
       })
       .catch(error => this.handleError(error));
@@ -144,4 +144,15 @@ export class AuthService {
     };
     return userRef.set(data);
   }
+
+  checkStatus(){
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+  }
+
 }

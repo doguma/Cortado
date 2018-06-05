@@ -1,18 +1,77 @@
-<h1>Welcome to Firestarter!</h1>
 
-<p>I am a Progressive Web App (PWA) built with Angular and Firebase.</p>
 
-<h2>Have Questions?</h2>
+<div *ngIf="!(auth.user | async); else alreadyLoggedIn">
+<!-- 
+  <h3>Social Login</h3>
 
-<p>
-  <i class="fa fa-slack fa-lg"></i> Let's talk on the <a target="blank" href="https://goo.gl/qF8Q5r">
-  Angular Firebase Developers Slack Team
-</a>
-</p>
+    <button (click)="signInWithGoogle()" class="button btn-social btn-google">
+      <i class="fa fa-google fa-lg"></i> Connect Google
+    </button>
 
-<h2>Free Open Source Screencasts</h2>
+    <button (click)="signInWithGithub()" class="button btn-social btn-github">
+      <i class="fa fa-github fa-lg"></i> Connect GitHub
+    </button>
 
-<p>
-  <i class="fa fa-youtube fa-lg"></i>
-  Subscribe to the <a href="https://www.youtube.com/channel/UCsBjURrPoezykLs9EqgamOA">AngularFirebase YouTube Channel</a> for weekly lessons.
-</p>
+    <button (click)="signInWithFacebook()" class="button  btn-social btn-facebook">
+      <i class="fa fa-facebook fa-lg"></i> Connect Facebook
+    </button> -->
+
+    <h3>Login</h3>
+
+    <form [formGroup]="userForm" (ngSubmit)="login()">
+        
+          <label for="email">Email</label>
+          <input type="email" id="email" class="input"
+                 formControlName="email" required autocomplete="new-password">
+        
+          <div *ngIf="formErrors.email" class="help is-danger">
+            {{ formErrors.email }}
+          </div>
+        
+          <label for="password">Password</label>
+          <input type="password" id="password" class="input"
+                 formControlName="password" required autocomplete="new-password">
+        
+          <div *ngIf="formErrors.password" class="help is-danger">
+            {{ formErrors.password }}
+          </div>
+        
+          <button type="submit" class="button" [disabled]="!userForm.valid">Submit</button>
+        
+          <span *ngIf="userForm.valid" class="help is-success">Form Looks Valid</span>
+        
+          <a *ngIf="!passReset && userForm.controls.email.valid" class="help is-info" (click)="resetPassword()">Reset Password for {{userForm.value.email}}?</a>
+          <p *ngIf="passReset" class="help is-info">Reset requested. Check your email instructions.</p>
+        
+        </form>
+
+
+    <hr>
+
+
+</div>
+
+<ng-template #alreadyLoggedIn>
+  <p class="text-success">
+    You are logged in <i class="fa fa-thumbs-up"></i>
+  </p>
+</ng-template>
+
+
+
+    <div class="jumbotron">
+      <div class="container">
+      <h1 class="display-3">Hi there!</h1>
+      <p class="lead">
+        Cortado is a simple managing platform that helps retail stores to set scheduling and inventory checkups.
+        It facilitates manager-employee interaction, along with helping manager's role of taking care of the store. Messaging and notifying features are also included. Search through the app by clicking on the icons on the top-right.
+      </p>
+      <hr>
+    
+        Sign up either as a manager or an employee to experience cortado
+      
+    
+        <p><a class="btn btn-secondary btn-lg fontSmall" routerLink="/user-form" routerLinkActive="active" role="button">signup for <b class="fontPacifico">cortado</b></a>
+        </p>
+      </div>
+    </div>
