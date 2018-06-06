@@ -11,6 +11,7 @@ import { CoreModule } from './core/core.module';
 import { UploadsModule } from './uploads/uploads.module';
 import { UiModule } from './ui/ui.module';
 import { NotesModule } from './notes/notes.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // AngularFire2 Modules
 import { AngularFireModule } from 'angularfire2';
@@ -22,20 +23,26 @@ import { AngularFireFunctionsModule } from 'angularfire2/functions';
 import { MaterialModule } from './material.module';
 import { ScheduleComponent } from './schedule/schedule.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoticeComponent } from './notice/notice.component';
+import { ExtraProfileComponent } from './extra-profile/extra-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    NoticeComponent,
+    ExtraProfileComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserTransferStateModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     CoreModule,
     UiModule,
     NotesModule,
     UploadsModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,

@@ -15,8 +15,9 @@ import { switchMap } from 'rxjs/operators';
 interface User {
   uid: string;
   email?: string | null;
-  photoURL?: string;
   displayName?: string;
+  position?: string;
+  storeName?: string;
 }
 
 @Injectable()
@@ -47,21 +48,6 @@ export class AuthService {
     return this.oAuthLogin(provider);
   }
 
-  githubLogin() {
-    const provider = new firebase.auth.GithubAuthProvider();
-    return this.oAuthLogin(provider);
-  }
-
-  facebookLogin() {
-    const provider = new firebase.auth.FacebookAuthProvider();
-    return this.oAuthLogin(provider);
-  }
-
-  twitterLogin() {
-    const provider = new firebase.auth.TwitterAuthProvider();
-    return this.oAuthLogin(provider);
-  }
-
   private oAuthLogin(provider: any) {
     return this.afAuth.auth
       .signInWithPopup(provider)
@@ -89,10 +75,9 @@ export class AuthService {
   emailSignUp(email: string, password: string) {
     return this.afAuth.auth
       .createUserWithEmailAndPassword(email, password)
-      .then(credential => {
-        this.router.navigate(['/']);        
+      .then(credential => {      
         return this.updateUserData(credential.user); // if using firestore
-        
+
       })
       .catch(error => this.handleError(error));
   }
@@ -102,7 +87,6 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then(credential => {
         this.notify.update('Welcome to Firestarter!!!', 'success');
-        this.router.navigate(['/']);
         return this.updateUserData(credential.user);
       })
       .catch(error => this.handleError(error));
@@ -140,19 +124,37 @@ export class AuthService {
       uid: user.uid,
       email: user.email || null,
       displayName: user.displayName || 'nameless user',
-      photoURL: user.photoURL || 'https://goo.gl/Fz9nrQ'
+      position: user.position,
+      storeName: user.storeName
     };
     return userRef.set(data);
   }
 
-  checkStatus(){
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        return true;
-      } else {
-        return false;
-      }
-    })
+  public addExtraProfile(displayName: string, storeName: string, position: string){
+    const currentUser = firebase.auth().currentUser;
+
+    // currentUser.updateProfile({
+    //   displayName: displayName,
+    //   storeName: storeName,
+    //   position: position
+    // }).then(function() {
+    //   console.log('update successful!');
+    // }).catch(function(error) {
+    //   console.log('error happened');
+    // })
+
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc(
+      `users/${currentUser.uid}`
+    );
+
+    const data: User = {
+      uid: currentUser.uid,
+      email: currentUser.email || null,
+      displayName: displayName,
+      position: position,
+      storeName: storeName
+    }; 
+    return userRef.set(data); 
   }
 
 }

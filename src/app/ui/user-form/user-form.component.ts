@@ -47,6 +47,7 @@ export class UserFormComponent implements OnInit {
 
   signup() {
     this.auth.emailSignUp(this.userForm.value['email'], this.userForm.value['password']);
+    this.router.navigate(['extra-profile']);
   }
 
   login() {

@@ -1,0 +1,38 @@
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Pacifico');
+  </style>
+
+
+<form [formGroup]="extraProfileForm"  *ngIf="newUser"  (ngSubmit)="extraProfile()">
+
+<h3>Please fill in extra information</h3>
+<hr>
+
+<label for="displayName">displayName</label>
+<input type="text" id="displayName" class="input"
+       formControlName="displayName" required>
+
+<div *ngIf="formErrors.displayName" class="notification is-danger">
+  {{ formErrors.displayName }}
+</div>
+
+<label for="storeName">Store Name</label>
+<input type="text" id="storeName" class="input"
+       formControlName="storeName" required >
+
+<div *ngIf="formErrors.storeName" class="notification is-danger">
+  {{ formErrors.storeName }}
+</div>
+
+<label for="position"> Position </label>
+<input type="text" id="position" class="input"
+       formControlName="position" required>
+
+<div *ngIf="formErrors.position" class="notification is-danger">
+  {{ formErrors.position }}
+</div>
+
+<div *ngIf="extraProfileForm.valid" class="notification is-success">Form is valid</div>
+<button type="submit" class="button" [disabled]="!extraProfileForm.valid">Submit</button>
+
+</form>

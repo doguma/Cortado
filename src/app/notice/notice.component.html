@@ -1,0 +1,24 @@
+<p>
+  notice works!
+</p>
+
+
+<input [(ngModel)]="title" placeholder="add title" class="input">
+
+<input [(ngModel)]="content" placeholder="add content" class="input">
+
+
+<button class="button is-success" (click)="clickHandler()" [disabled]="content?.length < 2 || content?.length > 200">
+  Add Notice
+</button>
+
+<hr>
+
+<div *ngFor="let post of posts | async">
+  <div>
+    <h2>{{ post.title }}</h2>
+    <h3>{{ post.content }}</h3>
+
+    <span class="button is-small is-danger" (click)='deletePost(post?.id)'>Delete</span>
+  </div>
+</div>

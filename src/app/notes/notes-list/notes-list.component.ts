@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   templateUrl: './notes-list.component.html',
   styleUrls: ['./notes-list.component.scss']
 })
+
 export class NotesListComponent implements OnInit {
 
   notes: Observable<any[]>;

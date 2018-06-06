@@ -39,10 +39,7 @@
           <button type="submit" class="button" [disabled]="!userForm.valid">Submit</button>
         
           <span *ngIf="userForm.valid" class="help is-success">Form Looks Valid</span>
-        
-          <a *ngIf="!passReset && userForm.controls.email.valid" class="help is-info" (click)="resetPassword()">Reset Password for {{userForm.value.email}}?</a>
-          <p *ngIf="passReset" class="help is-info">Reset requested. Check your email instructions.</p>
-        
+
         </form>
 
 
@@ -67,11 +64,12 @@
         It facilitates manager-employee interaction, along with helping manager's role of taking care of the store. Messaging and notifying features are also included. Search through the app by clicking on the icons on the top-right.
       </p>
       <hr>
-    
+      <div *ngIf="!(auth.user | async)">
         Sign up either as a manager or an employee to experience cortado
       
     
         <p><a class="btn btn-secondary btn-lg fontSmall" routerLink="/user-form" routerLinkActive="active" role="button">signup for <b class="fontPacifico">cortado</b></a>
         </p>
+      </div>
       </div>
     </div>
