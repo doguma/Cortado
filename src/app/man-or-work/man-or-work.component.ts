@@ -4,30 +4,26 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../core/auth.service';
 
-type UserFields = 'displayName' | 'nickName';
+type UserFields = 'position';
 type FormErrors = { [u in UserFields]: string };
 
 
 @Component({
-  selector: 'extra-profile',
-  templateUrl: './extra-profile.component.html',
-  styleUrls: ['./extra-profile.component.scss']
+  selector: 'man-or-work',
+  templateUrl: './man-or-work.component.html',
+  styleUrls: ['./man-or-work.component.scss']
 })
-export class ExtraProfileComponent implements OnInit {
+export class ManOrWorkComponent implements OnInit {
 
   extraProfileForm: FormGroup;
   newUser = true; // to toggle login or signup form
 
   formErrors: FormErrors = {
-    'displayName': '',
-    'nickName': ''
+    'position': ''
   };
   validationMessages = {
-    'displayName': {
-      'required': 'Store name is required.'
-    },
-    'nickName': {
-      'required': 'Nickname is required.'
+    'position': {
+      'required': 'This is a required field'
     }
   };
 
@@ -37,19 +33,16 @@ export class ExtraProfileComponent implements OnInit {
     this.buildForm();
   }
 
-  extraProfile() {
-    this.auth.addExtraProfile(this.extraProfileForm.value['displayName'], this.extraProfileForm.value['nickName']);
-    this.router.navigate(['/']);    
+  manOrWork() {
+    this.auth.addManOrWork(this.extraProfileForm.value['position']);
+    this.router.navigate(['extra-profile']);    
   }
 
   buildForm() {
     this.extraProfileForm = this.fb.group({
-      'displayName': ['', [
+      'position': ['', [
         Validators.required
       ]],
-      'nickName': ['', [
-        Validators.required
-      ]]
     });
 
     this.extraProfileForm.valueChanges.subscribe((data) => this.onValueChanged(data));
@@ -61,7 +54,7 @@ export class ExtraProfileComponent implements OnInit {
     if (!this.extraProfileForm) { return; }
     const form = this.extraProfileForm;
     for (const field in this.formErrors) {
-      if (Object.prototype.hasOwnProperty.call(this.formErrors, field) && (field === 'displayName' || field === 'nickName')) {
+      if (Object.prototype.hasOwnProperty.call(this.formErrors, field) && (field === 'position')) {
         // clear previous error message (if any)
         this.formErrors[field] = '';
         const control = form.get(field);

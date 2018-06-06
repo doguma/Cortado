@@ -14,10 +14,11 @@
 <!-- User logged in -->
 <ng-template #authenticated>
   <div *ngIf="auth.user | async as user">
-    <h3>Welcome {{ user.displayName }}</h3>
+    <h3>Welcome {{ user.nickName }}</h3>
     <br>
-    <p> store name: {{ user.storeName }}</p>
-    <p> position: {{ user.position }}</p>
+    <p> store name: <b>{{ user.displayName }}</b></p>
+    <p> position: {{ user.photoURL }}</p>
+    <p> email: {{ user.email }}</p>
     <br/>
     <button class="button" (click)="logout()">Logout</button>
   </div>

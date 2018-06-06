@@ -25,13 +25,15 @@ import { ScheduleComponent } from './schedule/schedule.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoticeComponent } from './notice/notice.component';
 import { ExtraProfileComponent } from './extra-profile/extra-profile.component';
+import { ManOrWorkComponent } from './man-or-work/man-or-work.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ScheduleComponent,
     NoticeComponent,
-    ExtraProfileComponent
+    ExtraProfileComponent,
+    ManOrWorkComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

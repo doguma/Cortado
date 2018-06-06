@@ -1,0 +1,25 @@
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Pacifico');
+  </style>
+
+
+<form [formGroup]="extraProfileForm"  *ngIf="newUser"  (ngSubmit)="manOrWork()">
+
+<h3>Select your work position</h3>
+<hr>
+
+<div>
+  <label for="position" class="needSpace"> select position:  </label> 
+  <select formControlName="position" name="position" id="position" type="text" required>
+    <option value="manager"> Manager </option>
+    <option value="employee"> Employee </option>
+  </select>
+</div>
+
+<div *ngIf="formErrors.position" class="notification is-danger">
+  {{ formErrors.position }}
+</div>
+<br>
+<button type="submit" class="button" [disabled]="!extraProfileForm.valid">Next</button>
+
+</form>

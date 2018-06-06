@@ -16,8 +16,8 @@ interface User {
   uid: string;
   email?: string | null;
   displayName?: string;
-  position?: string;
-  storeName?: string;
+  nickName?: string;
+  photoURL?: string;
 }
 
 @Injectable()
@@ -123,25 +123,30 @@ export class AuthService {
     const data: User = {
       uid: user.uid,
       email: user.email || null,
-      displayName: user.displayName || 'nameless user',
-      position: user.position,
-      storeName: user.storeName
+      displayName: user.displayName || 'nameless store',
+      photoURL: user.photoURL,
+      nickName: user.nickName
     };
     return userRef.set(data);
   }
 
-  public addExtraProfile(displayName: string, storeName: string, position: string){
+  public addManOrWork(position: string){
     const currentUser = firebase.auth().currentUser;
 
-    // currentUser.updateProfile({
-    //   displayName: displayName,
-    //   storeName: storeName,
-    //   position: position
-    // }).then(function() {
-    //   console.log('update successful!');
-    // }).catch(function(error) {
-    //   console.log('error happened');
-    // })
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc(
+      `users/${currentUser.uid}`
+    );
+
+    const data: User = {
+      uid: currentUser.uid,
+      photoURL: position
+    }; 
+    return userRef.set(data); 
+  }
+
+
+  public addExtraProfile(displayName: string, nickName: string){
+    const currentUser = firebase.auth().currentUser;
 
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
       `users/${currentUser.uid}`
@@ -151,10 +156,9 @@ export class AuthService {
       uid: currentUser.uid,
       email: currentUser.email || null,
       displayName: displayName,
-      position: position,
-      storeName: storeName
+      nickName: nickName
     }; 
-    return userRef.set(data); 
+    return userRef.update(data); 
   }
 
 }

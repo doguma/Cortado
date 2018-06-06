@@ -11,6 +11,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { UserFormComponent } from './ui/user-form/user-form.component';
 import { NoticeComponent } from './notice/notice.component';
 import { ExtraProfileComponent } from './extra-profile/extra-profile.component';
+import { ManOrWorkComponent } from './man-or-work/man-or-work.component';
 
 import { SsrPageComponent } from './ui/ssr-page/ssr-page.component';
 
@@ -25,6 +26,8 @@ const routes: Routes = [
   { path: 'user-form', component: UserFormComponent },
   { path: 'notice', component: NoticeComponent, canActivate: [AuthGuard] },
   { path: 'extra-profile', component: ExtraProfileComponent },
+  { path: 'man-or-work', component: ManOrWorkComponent },
+
 
   { path: 'ssr', component: SsrPageComponent },
 ];

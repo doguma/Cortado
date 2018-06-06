@@ -8,28 +8,20 @@
 <h3>Please fill in extra information</h3>
 <hr>
 
-<label for="displayName">displayName</label>
+<label for="nickName">nickName</label>
+<input type="text" id="nickName" class="input"
+       formControlName="nickName" required>
+
+<div *ngIf="formErrors.nickName" class="notification is-danger">
+  {{ formErrors.nickName }}
+</div>
+
+<label for="displayName">Store Name</label>
 <input type="text" id="displayName" class="input"
-       formControlName="displayName" required>
+       formControlName="displayName" required >
 
 <div *ngIf="formErrors.displayName" class="notification is-danger">
   {{ formErrors.displayName }}
-</div>
-
-<label for="storeName">Store Name</label>
-<input type="text" id="storeName" class="input"
-       formControlName="storeName" required >
-
-<div *ngIf="formErrors.storeName" class="notification is-danger">
-  {{ formErrors.storeName }}
-</div>
-
-<label for="position"> Position </label>
-<input type="text" id="position" class="input"
-       formControlName="position" required>
-
-<div *ngIf="formErrors.position" class="notification is-danger">
-  {{ formErrors.position }}
 </div>
 
 <div *ngIf="extraProfileForm.valid" class="notification is-success">Form is valid</div>
