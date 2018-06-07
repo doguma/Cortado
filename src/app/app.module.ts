@@ -26,6 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoticeComponent } from './notice/notice.component';
 import { ExtraProfileComponent } from './extra-profile/extra-profile.component';
 import { ManOrWorkComponent } from './man-or-work/man-or-work.component';
+import { AddProductComponent } from './notes/add-product/add-product.component';
+import { EditProductComponent } from './notes/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ManOrWorkComponent } from './man-or-work/man-or-work.component';
     ScheduleComponent,
     NoticeComponent,
     ExtraProfileComponent,
-    ManOrWorkComponent
+    ManOrWorkComponent,
+    AddProductComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
