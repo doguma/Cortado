@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NoticeService } from '../core/notice.service';
 import { Observable } from 'rxjs';
+import { AuthService } from '../core/auth.service';
 
 
 @Component({
@@ -15,7 +16,9 @@ export class NoticeComponent implements OnInit {
   title: string;
   content: string;
 
-  constructor(private noticeService: NoticeService) { }
+  constructor(private noticeService: NoticeService, private auth: AuthService) {
+    console.log('hi' + auth.ManOrWork())
+  }
 
   ngOnInit() {
     this.posts = this.noticeService.getData();

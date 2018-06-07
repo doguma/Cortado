@@ -1,20 +1,40 @@
 import { Injectable } from '@angular/core';
 
 import { firebase } from '@firebase/app';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
+interface User {
+  uid: string;
+  email?: string | null;
+  displayName?: string;
+  nickName?: string;
+  photoURL?: string;
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoticeService {
-
+  user: Observable<User | null>;
   postsCollection: AngularFirestoreCollection<any>;
   postDocument:   AngularFirestoreDocument<any>;
 
-  constructor(private afs: AngularFirestore) {
+  constructor( private afAuth: AngularFireAuth, private afs: AngularFirestore) {
+    this.user = this.afAuth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+        } else {
+          return of(null);
+        }
+      })
+    );
     const currentUser = firebase.auth().currentUser;
     this.postsCollection = this.afs.collection(`stores/${currentUser.displayName}/posts`, (ref) => ref.orderBy('time', 'desc'));    
    }
@@ -51,8 +71,4 @@ export class NoticeService {
   deletePost(id: string) {
     return this.getPost(id).delete();
   }
-
-
-
-
 }

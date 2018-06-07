@@ -1,0 +1,18 @@
+.fontPacifico {
+    font-family: 'Pacifico', sans-serif;
+  }
+  .flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-item{
+    max-width: 400px;
+    margin: 10px;
+}
+a.no_text_decoration2{
+  text-decoration: none;
+  color: grey;
+}

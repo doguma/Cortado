@@ -1,6 +1,6 @@
-<p>
-  notice works!
-</p>
+<h3> NOTICE BOARD </h3>
+
+<div *ngIf="auth.user | async as user">
 
 
 <input [(ngModel)]="title" placeholder="add title" class="input">
@@ -11,6 +11,8 @@
 <button class="button is-success" (click)="clickHandler()" [disabled]="content?.length < 2 || content?.length > 200">
   Add Notice
 </button>
+
+</div>
 
 <hr>
 

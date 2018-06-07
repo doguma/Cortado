@@ -20,9 +20,11 @@ interface User {
   photoURL?: string;
 }
 
+
 @Injectable()
 export class AuthService {
   user: Observable<User | null>;
+  displayyName: string;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -30,6 +32,7 @@ export class AuthService {
     private router: Router,
     private notify: NotifyService
   ) {
+    
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
@@ -39,6 +42,7 @@ export class AuthService {
         }
       })
     );
+
   }
 
   ////// OAuth Methods /////
@@ -142,6 +146,14 @@ export class AuthService {
       photoURL: position
     }; 
     return userRef.set(data); 
+  }
+
+
+
+  ManOrWork(){
+    const currentUser = firebase.auth().currentUser;
+    return currentUser.photoURL;
+    
   }
 
 

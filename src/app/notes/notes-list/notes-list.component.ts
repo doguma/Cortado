@@ -7,11 +7,13 @@ import { Observable } from 'rxjs';
   templateUrl: './notes-list.component.html',
   styleUrls: ['./notes-list.component.scss']
 })
-
 export class NotesListComponent implements OnInit {
 
   notes: Observable<any[]>;
   content: string;
+  subcontent: string;
+  stock: number;
+  title: string;
 
   constructor(private notesService: NotesService) { }
 
@@ -20,8 +22,11 @@ export class NotesListComponent implements OnInit {
   }
 
   clickHandler() {
-    this.notesService.createNote(this.content);
+    this.notesService.createNote(this.content, this.subcontent, this.stock, this.title);
     this.content = '';
+    this.subcontent = '';
+    this.stock = null;
+    this.title = '';
   }
 
 }

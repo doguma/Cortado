@@ -1,17 +1,38 @@
-<h1>Firestore Notes</h1>
-<p>
-  Learn how to build 
-  <a href="https://angularfirebase.com/tag/firestore">cool stuff with Firestore</a>
-</p>
-<hr>
-
-<input [(ngModel)]="content" placeholder="Add your own note" class="input">
-
-
-<button class="button is-success" (click)="clickHandler()" [disabled]="content?.length < 2 || content?.length > 200">
-  Add Note
-</button>
-<hr>
-<div *ngFor="let note of notes | async">
-  <note-detail [note]="note"></note-detail>
-</div>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Ubuntu|Pacifico|Comfortaa');
+    </style>
+    
+    <div class="jumbotron">
+            <div class="container">
+            <h1 class="display-3">Inventory Check!</h1>
+            <p class="lead">
+              In this page, you may check the inventory status, and maintain stock to current.
+            </p>
+            <hr class="my-4">
+          
+              <p><a class="btn btn-secondary btn-lg" href="#" role="button">Go to <b class="fontPacifico">cortado</b></a>
+              </p>
+          </div>
+          </div> 
+          <div> 
+          <a class="no_text_decoration2" routerLink="/addProduct" routerLinkActive="active">
+            <mat-icon>note_add</mat-icon>
+          </a>
+          </div>
+    
+  <hr>
+  
+  <input [(ngModel)]="content" placeholder="Product Name" class="input">
+  <input [(ngModel)]="subcontent" placeholder="Product Serial Number" class="input">
+  <input [(ngModel)]="stock" placeholder="Stock #" class="input">
+  <input [(ngModel)]="title" placeholder="Content" class="input">
+  
+  <button class="button is-success" (click)="clickHandler()" [disabled]="content?.length < 2 || content?.length > 200">
+    Add Product
+  </button>
+  <hr>
+  <div fxLayoutGap="5px" class="flex-container">
+  <div fxLayout.xs="column" *ngFor="let note of notes | async" class= "flex-item">
+    <note-detail [note]="note"></note-detail>
+  </div>
+  </div>

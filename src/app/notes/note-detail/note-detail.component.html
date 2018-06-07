@@ -1,8 +1,25 @@
 <div>
-  <h3>{{ note.content }}</h3>
-  <span class="button is-small is-info" (click)='addHeartToNote(note.hearts)'>
-    Heart <i class="fa fa-heart" style="margin-left: 5px;"></i>
-  </span>
-  <span class="button is-small is-danger" (click)='deleteNote(note?.id)'>Delete</span>
-  <p>This note has been hearted {{ note.hearts || 0 }} times.</p>
-</div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+    <h3>{{ note.content | uppercase}}</h3>
+    </mat-card-title>
+    <mat-card-subtitle> Product # {{ note.subcontent }}</mat-card-subtitle>
+    <mat-card-subtitle> Remaining Stock {{ note.stock }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://images.pexels.com/photos/658687/pexels-photo-658687.jpeg?auto=compress&cs=tinysrgb&h=350">
+    <mat-card-content>
+      <p>
+        {{ note.title }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <span class="button is-small is-info" (click)='addHeartToNote(note.hearts)'>
+            {{ note.hearts || 0 }} <i class="fa fa-heart" style="margin-left: 5px;"></i>
+          </span>
+          <span class="button is-small is-danger" (click)='deleteNote(note?.id)'>Delete</span>
+          <!-- <p>This note has been hearted {{ note.hearts || 0 }} times. </p> -->
+        
+    </mat-card-actions>
+    </mat-card>
+  </div>
