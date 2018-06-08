@@ -29,6 +29,8 @@ import { ManOrWorkComponent } from './man-or-work/man-or-work.component';
 import { AddProductComponent } from './notes/add-product/add-product.component';
 import { EditProductComponent } from './notes/edit-product/edit-product.component';
 
+import { TimeAgoPipe } from 'time-ago-pipe'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,8 @@ import { EditProductComponent } from './notes/edit-product/edit-product.componen
     ExtraProfileComponent,
     ManOrWorkComponent,
     AddProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
