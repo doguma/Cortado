@@ -1,22 +1,39 @@
-th{
-    color: white;
-    height: 100px;
-    width: 200px;
-    text-align: center;
-}
-
-td{
-    text-align: center;
-    vertical-align: middle;
-}
-
 .aligncenter{
     text-align: center;
-
     vertical-align: middle;
+    color: white;
+    background-color: grey;
+}
+.aligncenter2{
+    text-align: center;
+    vertical-align: middle;
+    height: 100px;
+    width: 150px;
+}
+
+.aligncenter3{
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    width: 200px;
+    background-color: lightblue;
+}
+
+.aligncenter4{
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    width: 100px;
+    height: 100px;    
+    background-color: lightblue;
 }
 
 .hello{
     display: table-cell;
     text-align: center;
+}
+
+.button-center {
+    float: right;
+    margin-top: 20px;
 }

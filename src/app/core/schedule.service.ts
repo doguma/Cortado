@@ -30,6 +30,7 @@ interface Schedule {
   sun1: string;
   sun2: string;
   sun3: string;
+  time: any;
 }
 
 interface User {
@@ -62,6 +63,7 @@ export class ScheduleService {
     );
 
     this.timeCollection = this.afs.collection('schedule');    
+    // this.timeDocument = this.afs.doc<Schedule>('schedule'); 
    }
 
    getData(): Observable<any[]> {
@@ -75,8 +77,8 @@ export class ScheduleService {
     );
   }
 
-  getPost(id: string) {
-    return this.afs.doc<any>(`schedule/${id}`);
+  getPost(){
+    return this.afs.doc<any>(`schedule/CjSNr8ll1FcS1ykSlGlS`);
   }
 
   createPost(mon1: string, mon2: string, mon3: string, tue1: string, tue2: string, tue3: string, wed1: string, wed2: string, wed3: string, thu1: string, thu2: string, thu3: string, fri1: string, fri2: string, fri3: string, sat1: string, sat2: string, sat3: string, sun1: string, sun2: string, sun3: string) {
@@ -84,14 +86,14 @@ export class ScheduleService {
       mon1, mon2, mon3, tue1, tue2, tue3, wed1, wed2, wed3, thu1, thu2, thu3, fri1, fri2, fri3, sat1, sat2, sat3, sun1, sun2, sun3,
       time: new Date().getTime(),
     };
-    return this.timeCollection.add(post);
+    this.getPost().update(post);
   }
 
   updatePost(id: string, data: any) {
-    return this.getPost(id).update(data);
+    return this.getPost().update(data);
   }
 
   deletePost(id: string) {
-    return this.getPost(id).delete();
+    return this.getPost().delete();
   }
 }
