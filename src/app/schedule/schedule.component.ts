@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ScheduleService } from '../core/schedule.service';
+import { Observable } from 'rxjs';
+import { AuthService } from '../core/auth.service';
+
 
 @Component({
   selector: 'schedule',
@@ -6,54 +10,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./schedule.component.scss']
 })
 export class ScheduleComponent implements OnInit {
-  tiles = [
-    {text: 'shifts', cols:1, rows: 1, color: 'lightgrey'},
-    
 
-    {text: 'Mon', cols: 1, rows: 1, color: 'lightgrey'},
-    {text: 'Tue', cols: 1, rows: 1, color: 'lightgrey'},
-    {text: 'Wed', cols: 1, rows: 1, color: 'lightgrey'},
-    {text: 'Thu', cols: 1, rows: 1, color: 'lightgrey'},
-    {text: 'Fri', cols: 1, rows: 1, color: 'lightgrey'},
-    {text: 'Sat', cols: 1, rows: 1, color: 'lightgrey'},
-    {text: 'Sun', cols: 1, rows: 1, color: 'lightgrey'},
+  posts: Observable<any[]>;
+  mon1: string;
+  mon2: string;
+  mon3: string;
+  tue1: string;
+  tue2: string;
+  tue3: string;
+  wed1: string;
+  wed2: string;
+  wed3: string;
+  thu1: string;
+  thu2: string;
+  thu3: string;
+  fri1: string;
+  fri2: string;
+  fri3: string;
+  sat1: string;
+  sat2: string;
+  sat3: string;
+  sun1: string;
+  sun2: string;
+  sun3: string;
+  isManager = false;
 
-    {text: 'morning: 6AM - 2:30PM', cols:1, rows: 4, color: 'blue'},
-    
-    {text: 'Hannah', cols: 1, rows: 4, color: 'lightblue'},
-    {text: 'Elias', cols: 1, rows: 4, color: 'lightbrown'},
-    {text: 'Hanseul', cols: 1, rows: 4, color: 'lightyellow'},
-    {text: 'Hannah', cols: 1, rows: 4, color: 'lightblue'},
-    {text: 'Elias', cols: 1, rows: 4, color: 'lightbrown'},
-    {text: 'Hanseul', cols: 1, rows: 4, color: 'lightyellow'},
-    {text: 'Hannah', cols: 1, rows: 4, color: 'lightblue'},
 
-    {text: 'noon: 8:30AM - 4:00PM', cols:1, rows: 4, color: 'blue'},
-    
-    {text: 'Elias', cols: 1, rows: 4, color: 'lightbrown'},
-    {text: 'Hanseul', cols: 1, rows: 4, color: 'lightyellow'},
-    {text: 'Hannah', cols: 1, rows: 4, color: 'lightblue'},
-    {text: 'Elias', cols: 1, rows: 4, color: 'lightbrown'},
-    {text: 'Hanseul', cols: 1, rows: 4, color: 'lightyellow'},
-
-    
-    {text: 'Hannah', cols: 1, rows: 4, color: 'lightblue'},
-    {text: 'Elias', cols: 1, rows: 4, color: 'lightbrown'},
-
-    {text: 'evening: 6AM - 2:30PM', cols:1, rows: 4, color: 'blue'},    
-    
-    {text: 'Hanseul', cols: 1, rows: 4, color: 'lightyellow'},
-    {text: 'Hannah', cols: 1, rows: 4, color: 'lightblue'},
-    {text: 'Elias', cols: 1, rows: 4, color: 'lightbrown'},
-    {text: 'Hanseul', cols: 1, rows: 4, color: 'lightyellow'},
-    {text: 'Hannah', cols: 1, rows: 4, color: 'lightblue'},
-    {text: 'Elias', cols: 1, rows: 4, color: 'lightbrown'},
-    {text: 'Hannah', cols: 1, rows: 4, color: 'lightblue'}
-  ];
-
-  constructor() { }
+  constructor(private scheduleService: ScheduleService, private auth: AuthService) { }
 
   ngOnInit() {
+    this.posts = this.scheduleService.getData();
   }
 
+  clickHandler() {
+    this.scheduleService.createPost(this.mon1, this.mon2, this.mon3, this.tue1, this.tue2, this.tue3, this.wed1, this.wed2, this.wed3, this.thu1, this.thu2, this.thu3, this.fri1, this.fri2, this.fri3, this.sat1, this.sat2, this.sat3, this.sun1, this.sun2, this.sun3);
+  }
+
+  toggleForm() {
+    this.isManager = !this.isManager;
+  }
 }

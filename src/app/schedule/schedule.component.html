@@ -1,19 +1,60 @@
 <div class="jumbotron">
-    <div class="container">
+  <div class="container">
     <h2 class="display-3">This week's Schedule (4/30~5/6)</h2>
     <p class="lead">
-        message me only if emergency </p>
-    <hr class="my-4">
-  
+        message me only if emergency 
+    </p>
   </div>
-  </div>
+</div>
 
-  <mat-grid-list cols="8" rowHeight="70px">
-      <mat-grid-tile
-          *ngFor="let tile of tiles"
-          [colspan]="tile.cols"
-          [rowspan]="tile.rows"
-          [style.background]="tile.color">
-        {{tile.text}}
-      </mat-grid-tile>
-    </mat-grid-list>
+  <div *ngIf="isManager">
+        <p class="button" (click)="toggleForm()">go back</p>
+
+  <button class="button" style="background-color: #5C6BC0; color: white" (click)="clickHandler()">
+        save
+      </button>
+
+    <div  *ngFor="let post of posts | async">
+        <table>
+            <tr>
+                <th> &nbsp; </th> <th> mon </th> <th> tue </th> <th> wed </th> <th> thu </th><th> fri </th> <th> sat </th> <th> sun </th>
+            </tr>
+            <tr>
+                <th> morning </th> <td> <input [(ngModel)]="mon1" placeholder="{{post.mon1}}" class="input"> </td> <td> <input [(ngModel)]="tue1" placeholder="{{post.tue1}}" class="input"> </td> <td> <input [(ngModel)]="wed1" placeholder="{{post.wed1}}" class="input"> </td> <td> <input [(ngModel)]="thu1" placeholder="{{post.thu1}}" class="input"> </td><td> <input [(ngModel)]="fri1" placeholder="{{post.fri1}}" class="input"> </td> <td> <input [(ngModel)]="sat1" placeholder="{{post.sat1}}" class="input"> </td> <td> <input [(ngModel)]="sun1" placeholder="{{post.sun1}}" class="input"> </td>
+            </tr>
+            <tr>
+                <th> day </th> <td> <input [(ngModel)]="mon2" placeholder="{{post.mon2}}" class="input"> </td> <td> <input [(ngModel)]="tue2" placeholder="{{post.tue1}}" class="input"> </td> <td> <input [(ngModel)]="wed2" placeholder="{{post.wed1}}" class="input"> </td> <td> <input [(ngModel)]="thu2" placeholder="{{post.thu2}}" class="input"> </td><td> <input [(ngModel)]="fri2" placeholder="{{post.fri2}}" class="input"> </td> <td> <input [(ngModel)]="sat2" placeholder="{{post.sat2}}" class="input"> </td> <td> <input [(ngModel)]="sun2" placeholder="{{post.sun2}}" class="input"> </td>
+            </tr>
+            <tr>
+                <th> evening </th> <td> <input [(ngModel)]="mon3" placeholder="{{post.mon3}}" class="input"> </td> <td> <input [(ngModel)]="tue3" placeholder="{{post.tue1}}" class="input"> </td> <td> <input [(ngModel)]="wed3" placeholder="{{post.wed1}}" class="input"> </td> <td> <input [(ngModel)]="thu3" placeholder="{{post.thu3}}" class="input"> </td><td> <input [(ngModel)]="fri3" placeholder="{{post.fri3}}" class="input"> </td> <td> <input [(ngModel)]="sat3" placeholder="{{post.sat3}}" class="input"> </td> <td> <input [(ngModel)]="sun3" placeholder="{{post.sun3}}" class="input"> </td>
+            </tr>
+        </table>
+    </div>
+
+
+
+</div>
+
+<div *ngIf="!isManager">
+        <p class="button" (click)="toggleForm()">manage schedule</p>
+
+    <div  *ngFor="let post of posts | async">
+        <div>
+            <table class="hello">
+                <tr>
+                    <th> &nbsp; </th> <th class="aligncenter"> mon </th> <th class="aligncenter"> tue </th> <th class="aligncenter"> wed </th> <th class="aligncenter"> thu </th><th class="aligncenter"> fri </th> <th class="aligncenter"> sat </th> <th class="aligncenter"> sun </th>
+                </tr>
+                <tr>
+                    <th> morning </th> <td> {{post.mon1}} </td> <td> {{post.tue1}} </td> <td> {{post.wed1}} </td> <td> {{post.thu1}} </td><td> {{post.fri1}} </td> <td> {{post.sat1}} </td> <td> {{post.sun1}}</td>
+                </tr>
+                <tr>
+                    <th> day </th> <td> {{post.mon2}} </td> <td> {{post.tue2}} </td> <td> {{post.wed2}} </td> <td> {{post.thu2}} </td><td> {{post.fri2}} </td> <td> {{post.sat2}} </td> <td> {{post.sun2}}</td>
+                </tr>
+                <tr>
+                    <th> evening </th> <td> {{post.mon3}} </td> <td> {{post.tue3}} </td> <td> {{post.wed3}} </td> <td> {{post.thu3}} </td><td> {{post.fri3}} </td> <td> {{post.sat3}} </td> <td> {{post.sun3}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+</div>
