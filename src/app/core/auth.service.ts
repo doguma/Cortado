@@ -4,11 +4,14 @@ import { Router } from '@angular/router';
 import { firebase } from '@firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {
-  AngularFirestore,
+  AngularFirestore, AngularFirestoreCollection,
   AngularFirestoreDocument
 } from 'angularfire2/firestore';
 import { NotifyService } from './notify.service';
 
+import { QuerySnapshot, DocumentSnapshot } from '@firebase/firestore-types';
+
+import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
@@ -18,6 +21,7 @@ interface User {
   displayName?: string;
   nickName?: string;
   photoURL?: string;
+  phoneNum?: string;
 }
 
 
@@ -25,6 +29,8 @@ interface User {
 export class AuthService {
   user: Observable<User | null>;
   displayyName: string;
+  usersCollection: AngularFirestoreCollection<any>;
+  storeDocument:   AngularFirestoreDocument<any>;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -43,8 +49,21 @@ export class AuthService {
       })
     );
 
+    this.usersCollection = this.afs.collection('users', (ref) => ref.orderBy('nickName', 'asc'));
+
   }
 
+
+  getData(): Observable<any[]> {
+    return this.usersCollection.snapshotChanges().pipe(
+      map((actions) => {
+        return actions.map((a) => {
+          const data = a.payload.doc.data();
+          return { id: a.payload.doc.id, ...data };
+        });
+      })
+    );
+  }
   ////// OAuth Methods /////
 
   googleLogin() {
@@ -129,7 +148,8 @@ export class AuthService {
       email: user.email || null,
       displayName: user.displayName || 'nameless store',
       photoURL: user.photoURL,
-      nickName: user.nickName
+      nickName: user.nickName,
+      phoneNum: user.phoneNum
     };
     return userRef.set(data);
   }
@@ -157,18 +177,38 @@ export class AuthService {
   }
 
 
-  public addExtraProfile(displayName: string, nickName: string){
+
+  // getStoreContact(): Observable<any[]> {
+  //   const storeCollection = this.afs.collection('store', (ref) => ref.orderBy('time', 'desc'));
+    
+  //   // ['added', 'modified', 'removed']
+  //   return this.storeCollection.snapshotChanges().pipe(
+  //     map((actions) => {
+  //       return actions.map((a) => {
+  //         const data = a.payload.doc.data();
+  //         return { id: a.payload.doc.id, ...data };
+  //       });
+  //     })
+  //   );
+  // }
+
+  public addExtraProfile(displayName: string, nickName: string, phoneNum: string){
     const currentUser = firebase.auth().currentUser;
 
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
       `users/${currentUser.uid}`
     );
 
+    const storeRef: AngularFirestoreDocument<User> = this.afs.doc(
+      `store/${displayName}/users/${currentUser.uid}`
+    );
+
     const data: User = {
       uid: currentUser.uid,
       email: currentUser.email || null,
       displayName: displayName,
-      nickName: nickName
+      nickName: nickName,
+      phoneNum: phoneNum
     }; 
     return userRef.update(data); 
   }

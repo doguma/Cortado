@@ -5,16 +5,8 @@
 
 <form [formGroup]="extraProfileForm"  *ngIf="newUser"  (ngSubmit)="extraProfile()">
 
-<h3>Please fill in extra information</h3>
+<h3>Please fill in additional information</h3>
 <hr>
-
-<label for="nickName">nickName</label>
-<input type="text" id="nickName" class="input"
-       formControlName="nickName" required>
-
-<div *ngIf="formErrors.nickName" class="notification is-danger">
-  {{ formErrors.nickName }}
-</div>
 
 <label for="displayName">Store Name</label>
 <input type="text" id="displayName" class="input"
@@ -23,6 +15,23 @@
 <div *ngIf="formErrors.displayName" class="notification is-danger">
   {{ formErrors.displayName }}
 </div>
+
+<label for="nickName">Your Name</label>
+<input type="text" id="nickName" class="input"
+       formControlName="nickName" required>
+
+<div *ngIf="formErrors.nickName" class="notification is-danger">
+  {{ formErrors.nickName }}
+</div>
+
+<label for="phoneNum">Your phone number</label>
+<input type="text" id="phoneNum" class="input"
+       formControlName="phoneNum" required >
+
+<div *ngIf="formErrors.phoneNum" class="notification is-danger">
+  {{ formErrors.phoneNum }}
+</div>
+
 
 <div *ngIf="extraProfileForm.valid" class="notification is-success">Form is valid</div>
 <button type="submit" class="button" [disabled]="!extraProfileForm.valid">Submit</button>

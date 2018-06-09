@@ -4,7 +4,7 @@
 
 <div *ngIf="auth.user | async as user">
 
-
+<div class="margin-small">
 <input [(ngModel)]="title" placeholder="add title" class="input">
 
 <input [(ngModel)]="content" placeholder="add content" class="input">
@@ -15,14 +15,17 @@
 </button>
 
 </div>
+</div>
 <hr>
 
-<div style="margin-top: 25px" class="card text-yellow border-light mb-3" *ngFor="let post of posts | async">
-  <div>
-    <h5 class="card-header" style="padding: 15px"><b>{{ post.title }}</b></h5>
-    <h6 class="card-body" style="padding-left: 20px">{{ post.content }}</h6>
+<div class="border mb-3 margin-small" *ngFor="let post of posts | async">
+  <div class="card-body">
+      <span style="float:right;" class="button is-default" (click)='deletePost(post?.id)'>Delete</span>
+      
+    <h4 class="card-title" style="padding-left: 5px"><b>{{ post.title }}</b></h4>
+    <br>
+    <h5 class="card-text" style="padding-left: 15px">{{ post.content }}</h5>
 
-    <p style="padding-left: 20px"> Last updated {{ post.time  | timeAgo}} </p>
-    <span style="margin: 15px" class="button is-warn" (click)='deletePost(post?.id)'>Delete</span>
+    <p class="card-text" style="padding-left: 10px" class="text-blue"> Last updated {{ post.time  | timeAgo}} </p>
   </div>
 </div>

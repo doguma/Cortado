@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { firebase } from '@firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { QuerySnapshot, DocumentSnapshot } from '@firebase/firestore-types';
 
 import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
@@ -35,8 +36,7 @@ export class NoticeService {
         }
       })
     );
-    const currentUser = firebase.auth().currentUser;
-    this.postsCollection = this.afs.collection(`stores/${currentUser.displayName}/posts`, (ref) => ref.orderBy('time', 'desc'));    
+    this.postsCollection = this.afs.collection(`notices`, (ref) => ref.orderBy('time', 'desc'));    
    }
 
    getData(): Observable<any[]> {
@@ -52,7 +52,7 @@ export class NoticeService {
 
   getPost(id: string) {
     const currentUser = firebase.auth().currentUser;
-    return this.afs.doc<any>(`stores/${currentUser.displayName}/posts/${id}`);
+    return this.afs.doc<any>(`notices/${id}`);
   }
 
   createPost(title: string, content: string) {

@@ -1,1 +1,5 @@
-{}
+{
+  "projects": {
+    "default": "cortado-a0839"
+  }
+}

@@ -14,6 +14,7 @@ export class NotesListComponent implements OnInit {
   subcontent: string;
   stock: number;
   title: string;
+  pic: string;
 
   constructor(private notesService: NotesService) { }
 
@@ -22,11 +23,11 @@ export class NotesListComponent implements OnInit {
   }
 
   clickHandler() {
-    this.notesService.createNote(this.content, this.subcontent, this.stock, this.title);
+    this.notesService.createNote(this.content, this.subcontent, this.title, this.pic);
     this.content = '';
     this.subcontent = '';
-    this.stock = null;
     this.title = '';
+    this.pic = '';
   }
 
 }

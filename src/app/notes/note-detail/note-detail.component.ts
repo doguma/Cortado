@@ -25,4 +25,34 @@ export class NoteDetailComponent {
     this.notesService.deleteNote(id);
   }
 
+  addStockToNote(val: number) {
+    if (this.note.id) {
+      this.notesService.updateNote(this.note.id, { stock: val + 1});
+    } else {
+      console.error('Note missing ID!');
+    }
+  }
+  addMoreStockToNote(val: number) {
+    if (this.note.id) {
+      this.notesService.updateNote(this.note.id, { stock: val + 10});
+    } else {
+      console.error('Note missing ID!');
+    }
+  }
+
+  naddStockToNote(val: number) {
+    if (this.note.id) {
+      this.notesService.updateNote(this.note.id, { stock: val - 1 });
+    } else{
+      console.error('Note missing ID!');
+    }
+  }
+  naddMoreStockToNote(val: number) {
+    if (this.note.id) {
+      this.notesService.updateNote(this.note.id, { stock: val - 10 });
+    } else{
+      console.error('Note missing ID!');
+    }
+  }
+
 }

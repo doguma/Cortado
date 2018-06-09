@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../core/auth.service';
 
-type UserFields = 'displayName' | 'nickName';
+type UserFields = 'displayName' | 'nickName' | 'phoneNum';
 type FormErrors = { [u in UserFields]: string };
 
 
@@ -20,14 +20,18 @@ export class ExtraProfileComponent implements OnInit {
 
   formErrors: FormErrors = {
     'displayName': '',
-    'nickName': ''
+    'nickName': '',
+    'phoneNum': ''
   };
   validationMessages = {
     'displayName': {
       'required': 'Store name is required.'
     },
     'nickName': {
-      'required': 'Nickname is required.'
+      'required': 'Your name is required.'
+    },
+    'phoneNum': {
+      'required': 'Phone number is required'
     }
   };
 
@@ -38,7 +42,7 @@ export class ExtraProfileComponent implements OnInit {
   }
 
   extraProfile() {
-    this.auth.addExtraProfile(this.extraProfileForm.value['displayName'], this.extraProfileForm.value['nickName']);
+    this.auth.addExtraProfile(this.extraProfileForm.value['displayName'], this.extraProfileForm.value['nickName'], this.extraProfileForm.value['phoneNum']);
     this.router.navigate(['/']);    
   }
 
@@ -48,6 +52,9 @@ export class ExtraProfileComponent implements OnInit {
         Validators.required
       ]],
       'nickName': ['', [
+        Validators.required
+      ]],
+      'phoneNum': ['', [
         Validators.required
       ]]
     });
@@ -61,7 +68,7 @@ export class ExtraProfileComponent implements OnInit {
     if (!this.extraProfileForm) { return; }
     const form = this.extraProfileForm;
     for (const field in this.formErrors) {
-      if (Object.prototype.hasOwnProperty.call(this.formErrors, field) && (field === 'displayName' || field === 'nickName')) {
+      if (Object.prototype.hasOwnProperty.call(this.formErrors, field) && (field === 'displayName' || field === 'nickName' || field === 'phoneNum')) {
         // clear previous error message (if any)
         this.formErrors[field] = '';
         const control = form.get(field);

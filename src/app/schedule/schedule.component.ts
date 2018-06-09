@@ -12,6 +12,7 @@ import { AuthService } from '../core/auth.service';
 export class ScheduleComponent implements OnInit {
 
   posts: Observable<any[]>;
+  
   mon1: string;
   mon2: string;
   mon3: string;

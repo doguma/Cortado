@@ -31,13 +31,13 @@ export class NotesService {
     return this.afs.doc<any>(`notes/${id}`);
   }
 
-  createNote(content: string, subcontent: string, stock: number, title: string) {
+  createNote(content: string, subcontent: string, title: string, pic: string) {
     const note = {
       content,
       subcontent,
-      stock,
       title,
-      hearts: 0,
+      pic,
+      stock: 0,
       time: new Date().getTime(),
     };
     return this.notesCollection.add(note);

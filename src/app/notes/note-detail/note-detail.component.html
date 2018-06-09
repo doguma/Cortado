@@ -1,25 +1,42 @@
 <div>
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>
-    <h3>{{ note.content | uppercase}}</h3>
-    </mat-card-title>
-    <mat-card-subtitle> Product # {{ note.subcontent }}</mat-card-subtitle>
-    <mat-card-subtitle> Remaining Stock {{ note.stock }}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://images.pexels.com/photos/658687/pexels-photo-658687.jpeg?auto=compress&cs=tinysrgb&h=350">
-    <mat-card-content>
-      <p>
-        {{ note.title }}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-        <span class="button is-small is-info" (click)='addHeartToNote(note.hearts)'>
-            {{ note.hearts || 0 }} <i class="fa fa-heart" style="margin-left: 5px;"></i>
+  <mat-card >
+    <div>
+      <mat-card-header class="boi">
+        <mat-card-title><p align="center">
+            <img mat-card-image class="baby" src="{{ note.pic }}"></p>
+          <h3><p align="center">{{ note.content | uppercase}}</p></h3>
+        </mat-card-title>
+        <mat-card-subtitle> 
+            <p align="center">
+                {{ note.title }}
+              </p>
+              <hr>
+
+          <p align="center">
+              Remaining Stock <br>
+          <span class="no_text-decoration" (click)='naddMoreStockToNote(note.stock)'>
+            <i matTooltip="-10" class="fa fa-minus-square" style="margin-left: 5px;"></i>
           </span>
-          <span class="button is-small is-danger" (click)='deleteNote(note?.id)'>Delete</span>
-          <!-- <p>This note has been hearted {{ note.hearts || 0 }} times. </p> -->
-        
-    </mat-card-actions>
-    </mat-card>
+          <span class="no_text-decoration" (click)='naddStockToNote(note.stock)'>
+            <i matTooltip="-1" class="fa fa-minus-square-o" style="margin-left: 5px;"></i>
+          </span>
+          <span class="hehe">{{ note.stock }} </span>
+          <span class="no_text-decoration" (click)='addStockToNote(note.stock)'>
+            <i matTooltip="+1" class="fa fa-plus-square-o" style="margin-left: 5px;"></i>
+          </span>
+          <span class="no_text-decoration" (click)='addMoreStockToNote(note.stock)'>
+            <i matTooltip="+10" class="fa fa-plus-square" style="margin-left: 5px;"></i>
+          </span>
+        </p>
+        </mat-card-subtitle>
+      </mat-card-header>
+    <mat-card-content>
+
+
+  <p align="center"><button class="button is-default" (click)="deleteNote(note?.id)">
+    delete
+  </button></p>
+    </mat-card-content>
   </div>
+  </mat-card>
+</div>
