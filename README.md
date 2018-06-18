@@ -5,8 +5,8 @@
 ## signup process
 
 
-
-![Output sample](https://gifs.com/gif/cortado-signup-qYEzvD)
+## profile page
+![Alt Text](https://j.gifs.com/N9r3qN.gif)
 
 
 
