@@ -3,11 +3,30 @@
 
 
 ## signup process
+![Alt Text](https://j.gifs.com/N9r34N.gif)
+- form validation
 
 
 ## profile page
 ![Alt Text](https://j.gifs.com/N9r3qN.gif)
+- bootstrap UI components
 
+
+## announcement page
+![Alt Text](https://j.gifs.com/MQq3y1.gif)
+- 'timeago' pipe used (angularjs)
+
+
+## schedule page
+![Alt Text]()
+
+
+## inventory page
+![Alt Text]()
+
+
+## logout
+![Alt Text]()
 
 
 # Modified & Built on FireStarter
