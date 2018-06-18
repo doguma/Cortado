@@ -3,10 +3,10 @@
 
 
 ## signup process
-[![Watch the video](https://raw.github.com/doguma/cortado060418/master/cortado_main.png)](https://youtu.be/HDDPEB4EluA)
 
 
-![Output sample](https://github.com/doguma/cortado060418/raw/master/cortado_signup.mov)
+
+![Output sample](https://gifs.com/gif/cortado-signup-qYEzvD)
 
 
 
