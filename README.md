@@ -1,5 +1,5 @@
 # CORTADO
-- Simple managing platform that helps retail stores to set scheduling and inventory checkups. Facilitates manager-employee interaction by creating a platform with a web service. 
+- Simple managing platform that helps small stores to set up scheduling and inventory checkups. Facilitates manager-employee interaction by creating a co-platform based on a web service. 
 
 
 ## signup process
@@ -23,15 +23,16 @@
 
 ## inventory page
 ![Alt Text](https://j.gifs.com/KZo3PG.gif)
-- flex-layout
-- angular material 'tooltip'
+- flex-layout, bootstrap card
+- angular material 'tooltip' used
+
 
 ## logout
 ![Alt Text](https://j.gifs.com/4RrMl7.gif)
 - *ngIf="(auth.user | async)" used for the navbar icons
 
 
-# Modified & Built on FireStarter
+# Modified & Built from FireStarter
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
