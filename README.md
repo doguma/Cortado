@@ -18,15 +18,17 @@
 
 
 ## schedule page
-![Alt Text]()
+![Alt Text](https://j.gifs.com/yr4Lq6.gif)
 
 
 ## inventory page
-![Alt Text]()
-
+![Alt Text](https://j.gifs.com/KZo3PG.gif)
+- flex-layout
+- angular material 'tooltip'
 
 ## logout
-![Alt Text]()
+![Alt Text](https://j.gifs.com/4RrMl7.gif)
+- *ngIf="(auth.user | async)" used for the navbar icons
 
 
 # Modified & Built on FireStarter
