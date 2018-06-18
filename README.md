@@ -4,7 +4,7 @@
 
 ## signup process
 ![Alt Text](https://j.gifs.com/N9r34N.gif)
-- form validation
+- form validation used (ReactiveFormsModule, FormGroup, FormBuilder, Validators)
 
 
 ## profile page
