@@ -22,7 +22,7 @@
 
 
 ## inventory page
-![Alt Text](https://j.gifs.com/KZo3PG.gif)
+![Alt Text](https://j.gifs.com/yr4196.gif)
 - flex-layout, bootstrap card
 - angular material 'tooltip' used
 
