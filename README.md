@@ -17,10 +17,6 @@
 - 'timeago' pipe used (angularjs)
 
 
-## schedule page
-![Alt Text](https://j.gifs.com/yr4Lq6.gif)
-
-
 ## inventory page
 ![Alt Text](https://j.gifs.com/yr4196.gif)
 - flex-layout, bootstrap card
