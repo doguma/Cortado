@@ -47,7 +47,7 @@ FireStarter is an Angular PWA powered by Firebase. It can serve as a foundation 
 
 ## Usage
 
-- `git clone https://github.com/doguma/cortado060418.git cortado060418`
-- `cd cortado060418`
+- `git clone https://github.com/doguma/cortado.git cortado`
+- `cd cortado`
 - `npm install`
 - `ng serve`
